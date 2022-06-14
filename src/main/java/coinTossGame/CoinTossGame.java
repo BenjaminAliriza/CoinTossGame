@@ -27,17 +27,18 @@ public class CoinTossGame {
             if(b == 1 ){
 
                 System.out.println("Hello player 1, what is your name?");
-                player1.setName(scanner.next());
+                player1.setName(scanner.nextLine());
                 System.out.println("Thank you," + player1.getName() +"\n");
 
             }else {
 
                 System.out.println("Hello player 2, what is your name?");
-                player2.setName(scanner.next());
+                player2.setName(scanner.nextLine());
                 System.out.println("Thank you," + player2.getName()+"\n");
             }
 
         }
+
     }
 
     public static void takePlayerGuess(){
@@ -45,7 +46,7 @@ public class CoinTossGame {
         Coin coin = new Coin();
         Scanner scanner = new Scanner(System.in);
 
-         for (int b = 3; b > 0; b--) {
+         for (int b = 2; b >= 0; b--) {
              System.out.println(player1.getName()+", guess what side the coin will land.");
 
              String guess = scanner.next().toLowerCase();
@@ -63,6 +64,12 @@ public class CoinTossGame {
                     }
 
             }else {
+
+                 if(b == 0){
+                     System.out.println("You FOOL! Leave this please IMMEDIATELY!");
+                     System.exit(0);
+                 }
+
                  System.out.println("You seem to have misspelled either 'heads' or 'tails'." +
                          "\nYou've got exactly " + b + " tries left" +
                          "\nPlease try again.");
@@ -71,6 +78,8 @@ public class CoinTossGame {
         System.out.println(player1.getName()+", your official guess is "+player1.getGuess()+
             ".\nThat means that "+player2.getName()+" is betting on " + player2.getGuess()+"." +
                 "\nMay the odds, be ever in your favour.");
+
+
     }
 
     public static void flipThatCoin() {
@@ -99,6 +108,6 @@ public class CoinTossGame {
             } else {
                 System.out.println("Congratulations " + player2.getName() + "!!! You've won!!!");
             }
-
+        scanner.close();
     }
 }
