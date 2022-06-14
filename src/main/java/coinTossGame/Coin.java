@@ -1,20 +1,24 @@
 package coinTossGame;
 
-import java.security.PublicKey;
 import java.util.Random;
 
 public  class Coin {
+    private String side = "Please flip the coin.";
+    public String getSide(){
+        return side;
+    }
+    public String heads = "heads";
+    public String tails = "tails";
 
-    private String side;
-
-    String heads = "Heads!";
-    String tails = "Tails!";
-
-    public boolean flip(){
+    public void flip(){
 
         Random random = new Random();
 
-        return random.nextBoolean();
+        if (random.nextBoolean()==true){
+            side = heads;
+        }else {
+            side = tails;
+        }
 
 
     }
